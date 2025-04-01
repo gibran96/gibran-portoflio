@@ -64,6 +64,9 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
+			backgroundImage: {
+				'grid-pattern': 'linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)',
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -97,6 +100,31 @@ export default {
 				'blink': {
 					'0%, 100%': { borderColor: 'transparent' },
 					'50%': { borderColor: 'hsl(var(--primary))' }
+				},
+				'blob': {
+					'0%': {
+						transform: 'translate(0px, 0px) scale(1)'
+					},
+					'33%': {
+						transform: 'translate(30px, -50px) scale(1.1)'
+					},
+					'66%': {
+						transform: 'translate(-20px, 20px) scale(0.9)'
+					},
+					'100%': {
+						transform: 'translate(0px, 0px) scale(1)'
+					}
+				},
+				'float': {
+					'0%': {
+						transform: 'translateY(0px) rotate(0deg)'
+					},
+					'50%': {
+						transform: 'translateY(-20px) rotate(5deg)'
+					},
+					'100%': {
+						transform: 'translateY(0px) rotate(0deg)'
+					}
 				}
 			},
 			animation: {
@@ -106,9 +134,35 @@ export default {
 				'fade-out': 'fade-out 0.5s ease-out',
 				'slide-in': 'slide-in 0.5s ease-out',
 				'typing': 'typing 3.5s steps(40, end)',
-				'blink': 'blink 1s step-end infinite'
+				'blink': 'blink 1s step-end infinite',
+				'blob': 'blob 7s infinite',
+				'float': 'float 6s ease-in-out infinite'
+			},
+			transitionDelay: {
+				'2000': '2000ms',
+				'4000': '4000ms',
+				'5000': '5000ms',
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		function({ addUtilities, theme }: any) {
+			const animationDelays = {
+				'.animation-delay-2000': {
+					'animation-delay': '2s',
+				},
+				'.animation-delay-3000': {
+					'animation-delay': '3s',
+				},
+				'.animation-delay-4000': {
+					'animation-delay': '4s',
+				},
+				'.animation-delay-5000': {
+					'animation-delay': '5s',
+				},
+			};
+			addUtilities(animationDelays);
+		},
+	],
 } satisfies Config;

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
@@ -43,8 +44,25 @@ const Hero = () => {
   }, [text, isTyping, currentPhraseIndex, phrases]);
 
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center relative pt-16">
-      <div className="absolute inset-0 dark:bg-gradient-to-b dark:from-background dark:to-background/80 bg-gradient-to-b from-white to-secondary/30 -z-10"></div>
+    <section id="home" className="min-h-screen flex flex-col justify-center relative pt-16 overflow-hidden">
+      {/* Animated background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 dark:bg-gradient-to-b dark:from-background dark:to-background/80 bg-gradient-to-b from-white to-secondary/30"></div>
+        
+        {/* Animated circles */}
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-accent/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-secondary/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        
+        {/* Floating code elements */}
+        <div className="hidden md:block absolute top-1/4 left-1/5 text-primary/20 text-4xl font-mono animate-float animation-delay-1000">{"{}"}</div>
+        <div className="hidden md:block absolute top-1/2 right-1/4 text-accent/20 text-3xl font-mono animate-float animation-delay-3000">{"</>"}</div>
+        <div className="hidden md:block absolute bottom-1/3 left-1/3 text-secondary/20 text-5xl font-mono animate-float animation-delay-5000">{"( )"}</div>
+        
+        {/* Grid pattern */}
+        <div className="absolute inset-0 bg-grid-pattern bg-[length:50px_50px] opacity-[0.015] dark:opacity-[0.03]"></div>
+      </div>
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div className="flex flex-col max-w-xl animate-fade-in">

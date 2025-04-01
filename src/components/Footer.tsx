@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
 
@@ -23,7 +22,7 @@ const Footer = () => {
                 scrollToTop();
               }}
             >
-              <span className="text-primary">Dev</span>Portfolio
+              <span className="text-primary">Gibran</span>Portfolio
             </a>
           </div>
           
@@ -62,7 +61,7 @@ const Footer = () => {
           
           <div className="border-t border-border w-full pt-6 text-center">
             <p className="text-sm text-muted-foreground">
-              &copy; {new Date().getFullYear()} John Doe. All rights reserved.
+              &copy; {new Date().getFullYear()} Gibran Myageri. All rights reserved.
             </p>
           </div>
         </div>

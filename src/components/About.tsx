@@ -12,7 +12,7 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
           <div className="space-y-6">
             <p className="text-lg">
-              I'm a passionate software engineer specializing in building exceptional digital 
+              I'm Gibran Myageri, a passionate software engineer specializing in building exceptional digital 
               experiences. With a strong foundation in both frontend and backend technologies, 
               I enjoy creating efficient, scalable, and user-friendly solutions.
             </p>

@@ -13,9 +13,9 @@ const Index = () => {
   useEffect(() => {
     // Update meta tags for SEO
     updateMetaTags(
-      'John Doe | Software Engineer Portfolio',
-      'Professional portfolio showcasing software engineering projects, skills, and experience of John Doe.',
-      'software engineer, developer, portfolio, web development, programming, react, node.js, full stack developer'
+      'Gibran Myageri | Software Engineer Portfolio',
+      'Professional portfolio showcasing software engineering projects, skills, and experience of Gibran Myageri.',
+      'Gibran Myageri, software engineer, developer, portfolio, web development, programming, react, node.js, full stack developer'
     );
   }, []);
 

@@ -36,7 +36,7 @@ const Footer = () => {
           
           <div className="flex space-x-4 mb-8">
             <a 
-              href="https://github.com" 
+              href="https://github.com/gibran96" 
               target="_blank" 
               rel="noopener noreferrer"
               className="bg-background hover:bg-primary hover:text-primary-foreground p-2 rounded-full transition-colors"
@@ -44,7 +44,7 @@ const Footer = () => {
               <Github className="h-5 w-5" />
             </a>
             <a 
-              href="https://linkedin.com" 
+              href="https://linkedin.com/in/gibran-myageri" 
               target="_blank" 
               rel="noopener noreferrer"
               className="bg-background hover:bg-primary hover:text-primary-foreground p-2 rounded-full transition-colors"
@@ -52,7 +52,7 @@ const Footer = () => {
               <Linkedin className="h-5 w-5" />
             </a>
             <a 
-              href="mailto:contact@example.com"
+              href="mailto:gibranmyageri@gmail.com"
               className="bg-background hover:bg-primary hover:text-primary-foreground p-2 rounded-full transition-colors"
             >
               <Mail className="h-5 w-5" />

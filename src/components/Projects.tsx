@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -17,67 +16,74 @@ interface Project {
 }
 
 const Projects = () => {
-  const categories = ['All', 'Web', 'Mobile', 'Backend'];
+  const categories = ['All', 'Web', 'Backend', 'Cloud', 'ML'];
   const [activeCategory, setActiveCategory] = useState('All');
   
   const projects: Project[] = [
     {
       id: '1',
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce application with product management, shopping cart, and payment processing.',
-      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085',
-      tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      github: 'https://github.com',
-      liveDemo: 'https://example.com',
+      title: 'Banking Web Applications',
+      description: 'Engineered foundational infrastructure for web applications at EagleBank using Python (FastAPI) for backend and React for frontend, hosted on Azure App Services.',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71',
+      tags: ['React', 'FastAPI', 'Python', 'Azure', 'CI/CD'],
       category: 'Web'
     },
     {
       id: '2',
-      title: 'Task Management App',
-      description: 'A productivity application for organizing tasks, with drag-and-drop functionality and team collaboration.',
-      image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7',
-      tags: ['React', 'TypeScript', 'Firebase', 'Material UI'],
-      github: 'https://github.com',
-      liveDemo: 'https://example.com',
-      category: 'Web'
+      title: 'AI Chat with RAG Workflow',
+      description: 'Integrated AI-driven chat feature into internal applications using Retrieval-Augmented Generation (RAG) workflow to enhance user interaction and information retrieval.',
+      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995',
+      tags: ['Python', 'LLMs', 'RAG', 'Azure', 'AI'],
+      category: 'ML'
     },
     {
       id: '3',
-      title: 'Fitness Tracker API',
-      description: 'RESTful API for tracking workout routines, nutrition data, and user progress with detailed analytics.',
-      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6',
-      tags: ['Node.js', 'Express', 'PostgreSQL', 'GraphQL'],
-      github: 'https://github.com',
-      category: 'Backend'
-    },
-    {
-      id: '4',
-      title: 'Weather Mobile App',
-      description: 'A cross-platform mobile application that provides real-time weather forecasts and notifications.',
-      image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d',
-      tags: ['React Native', 'Redux', 'Weather API', 'Geolocation'],
-      github: 'https://github.com',
-      liveDemo: 'https://example.com',
-      category: 'Mobile'
-    },
-    {
-      id: '5',
-      title: 'Portfolio Website',
-      description: 'A responsive portfolio website showcasing projects and skills with a modern design.',
-      image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b',
-      tags: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion'],
-      github: 'https://github.com',
-      liveDemo: 'https://example.com',
+      title: 'Commercial Loan Tracker',
+      description: 'Built a critical system for tracking and maintaining commercial loans, providing comprehensive asset management for the bank.',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f',
+      tags: ['React', 'FastAPI', 'PostgreSQL', 'Azure'],
       category: 'Web'
     },
     {
+      id: '4',
+      title: 'Auto Insurance Application',
+      description: 'Led front-end and back-end development for Farmers Insurance, replacing legacy technologies and achieving 10% increase in user quote completion.',
+      image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85',
+      tags: ['Angular 13', 'Java Spring Boot', 'SEO', 'CloudBees'],
+      category: 'Web'
+    },
+    {
+      id: '5',
+      title: 'CI/CD Pipeline Infrastructure',
+      description: 'Developed CI/CD pipelines from scratch using self-hosted GitHub Runners on Azure VM, automating deployment processes and boosting productivity by 30%.',
+      image: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb',
+      tags: ['Jenkins', 'GitHub Actions', 'Azure', 'Docker'],
+      github: 'https://github.com/gibran96',
+      category: 'Cloud'
+    },
+    {
       id: '6',
-      title: 'Chat Microservice',
-      description: 'A scalable real-time chat service built with websockets and message queues for high throughput.',
-      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6',
-      tags: ['Node.js', 'WebSockets', 'RabbitMQ', 'Redis'],
-      github: 'https://github.com',
+      title: 'SWIFT Payment Tracker',
+      description: 'Engineered real-time tracker for cross-border payments within SWIFT Global Payment Initiative, boosting employee productivity and expediting payment tracking by 40%.',
+      image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3',
+      tags: ['Spring Boot', 'Angular', 'Microservices', 'Azure'],
       category: 'Backend'
+    },
+    {
+      id: '7',
+      title: 'ABN Amro Banking Redesign',
+      description: 'Redesigned intranet banking applications migrating to Spring Boot & Angular 9, improving customer response time by 30%.',
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d',
+      tags: ['Spring Boot', 'Angular 9', 'Java', 'Microservices'],
+      category: 'Web'
+    },
+    {
+      id: '8',
+      title: 'ML Ops Course Materials',
+      description: 'Created comprehensive study materials on CI/CD pipelines, model training, deployment and hosting for Machine Learning Operations course at Northeastern.',
+      image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c',
+      tags: ['MLFlow', 'Airflow', 'Docker', 'Kubernetes', 'AWS'],
+      category: 'ML'
     }
   ];
   

@@ -7,10 +7,10 @@ const Hero = () => {
   const [text, setText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const phrases = [
-    "Software Engineer",
-    "Full Stack Developer", 
-    "Problem Solver",
-    "Tech Enthusiast"
+    "Full Stack Software Engineer",
+    "Cloud & DevOps Specialist", 
+    "ML Ops Enthusiast",
+    "AWS Certified Professional"
   ];
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
 
@@ -75,8 +75,8 @@ const Hero = () => {
               </h2>
             </div>
             <p className="text-lg text-muted-foreground mb-8">
-              I build exceptional digital experiences, focusing on creating elegant solutions
-              to complex problems.
+              Full Stack Engineer with 6+ years of experience building scalable web applications
+              using React, Angular, Python, Java, and cloud technologies like Azure and AWS.
             </p>
             <div className="flex flex-wrap gap-4 mb-8">
               <Button asChild className="rounded-full">
@@ -88,17 +88,17 @@ const Hero = () => {
             </div>
             <div className="flex space-x-4">
               <Button variant="ghost" size="icon" className="rounded-full" asChild>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/gibran96" target="_blank" rel="noopener noreferrer">
                   <Github className="h-5 w-5" />
                 </a>
               </Button>
               <Button variant="ghost" size="icon" className="rounded-full" asChild>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://linkedin.com/in/gibran-myageri" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="h-5 w-5" />
                 </a>
               </Button>
               <Button variant="ghost" size="icon" className="rounded-full" asChild>
-                <a href="mailto:contact@example.com">
+                <a href="mailto:gibranmyageri@gmail.com">
                   <Mail className="h-5 w-5" />
                 </a>
               </Button>

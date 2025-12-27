@@ -64,10 +64,10 @@ export const getSunriseSunsetTimes = async (): Promise<SunriseSunsetData> => {
 };
 
 export const updateMetaTags = (
-  title: string = 'Software Engineer Portfolio',
-  description: string = 'Professional portfolio showcasing software engineering projects, skills, and experience.',
-  keywords: string = 'software engineer, developer, portfolio, web development, programming',
-  author: string = 'Your Name'
+  title: string = 'Gibran Myageri | Full Stack Software Engineer',
+  description: string = 'Full Stack Software Engineer with 6+ years of experience in React, Angular, Spring Boot, Python, Azure, and AWS. MS in Computer Science from Northeastern University.',
+  keywords: string = 'Gibran Myageri, software engineer, full stack developer, React, Angular, Spring Boot, Python, Azure, AWS, Boston',
+  author: string = 'Gibran Myageri'
 ) => {
   // Update title
   document.title = title;

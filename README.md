@@ -22,6 +22,8 @@ Portfolio and resume content lives in `src/data/portfolio.ts`. Update it there t
 
 ## Automatic deployment
 
+Public portfolio: https://gibran-portfolio-beta.vercel.app
+
 The project is prepared for Vercel's GitHub integration:
 
 - Pushes to `main` deploy production automatically after the Vercel build succeeds.
@@ -40,11 +42,12 @@ npx --yes vercel@64.0.2 git connect https://github.com/gibran96/gibran-portoflio
 
 If Vercel requests GitHub app authorization, grant it access to `gibran96/gibran-portoflio` in your browser. In Vercel, select `main` as the production branch, Node.js 22, and enable access to System Environment Variables. Production must be publicly accessible; check Deployment Protection settings.
 
-For the first release, deploy and verify a preview, then publish production:
+Once the project has its first deployment, deploy and verify a preview, then publish production. Vercel assigns a new project’s very first deployment to production automatically:
 
 ```sh
 npm run deploy
 npm run deploy:production
+npm run check:deployment -- https://gibran-portfolio-beta.vercel.app
 ```
 
 After the Git connection is active, commit and push changes to use automatic deployments. The local `.vercel` link and downloaded environment files are ignored by Git.

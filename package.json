@@ -1,5 +1,5 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "gibran-portoflio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,7 +8,10 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check": "tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.node.json --noEmit",
+    "deploy": "npx --yes vercel@64.0.2",
+    "deploy:production": "npx --yes vercel@64.0.2 --prod"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

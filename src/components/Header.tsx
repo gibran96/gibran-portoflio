@@ -1,117 +1,25 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 
-import { useState, useEffect } from 'react';
-import { useTheme } from '../contexts/ThemeContext';
-import { Button } from '@/components/ui/button';
-import { Sun, Moon, Menu, X } from 'lucide-react';
+const sections = ['Experience', 'Projects', 'About', 'Contact'];
 
-const Header = () => {
-  const { isDarkMode, toggleTheme } = useTheme();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <header 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/80 backdrop-blur-md shadow-md' : 'bg-transparent'
-      }`}
-    >
-      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <a href="#" className="text-xl md:text-2xl font-bold">
-          <span className="text-primary">Dev</span>Portfolio
-        </a>
-        
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <a href="#home" className="hover:text-primary transition-colors">Home</a>
-          <a href="#about" className="hover:text-primary transition-colors">About</a>
-          <a href="#skills" className="hover:text-primary transition-colors">Skills</a>
-          <a href="#projects" className="hover:text-primary transition-colors">Projects</a>
-          <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
-          <Button 
-            variant="outline" 
-            size="icon" 
-            onClick={toggleTheme}
-            className="rounded-full"
-          >
-            {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-          </Button>
+    <header className="site-header no-print">
+      <div className="shell header-inner">
+        <Link className="wordmark" to="/" aria-label="Gibran Myageri home" onClick={() => setIsOpen(false)}>gm<span>.</span></Link>
+        <nav aria-label="Main navigation" className="desktop-nav">
+          {sections.map(section => <a key={section} href={`/#${section.toLowerCase()}`}>{section}</a>)}
+          <Link className="nav-resume" to="/resume">Resume <span aria-hidden="true">↗</span></Link>
         </nav>
-        
-        {/* Mobile Menu Button */}
-        <div className="flex items-center space-x-4 md:hidden">
-          <Button 
-            variant="outline" 
-            size="icon" 
-            onClick={toggleTheme}
-            className="rounded-full"
-          >
-            {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-          </Button>
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </Button>
-        </div>
+        <button className="menu-toggle" aria-label={isOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={isOpen} aria-controls="mobile-nav" onClick={() => setIsOpen(!isOpen)}>{isOpen ? <X size={22} /> : <Menu size={22} />}</button>
       </div>
-      
-      {/* Mobile Navigation */}
-      <div 
-        className={`fixed inset-0 bg-background/95 backdrop-blur-sm pt-20 transition-transform duration-300 transform ${
-          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        } md:hidden z-40`}
-      >
-        <nav className="flex flex-col items-center space-y-8 p-8">
-          <a 
-            href="#home" 
-            className="text-xl hover:text-primary transition-colors"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Home
-          </a>
-          <a 
-            href="#about" 
-            className="text-xl hover:text-primary transition-colors"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            About
-          </a>
-          <a 
-            href="#skills" 
-            className="text-xl hover:text-primary transition-colors"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Skills
-          </a>
-          <a 
-            href="#projects" 
-            className="text-xl hover:text-primary transition-colors"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Projects
-          </a>
-          <a 
-            href="#contact" 
-            className="text-xl hover:text-primary transition-colors"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Contact
-          </a>
-        </nav>
-      </div>
+      {isOpen && <nav id="mobile-nav" aria-label="Mobile navigation" className="mobile-nav shell" onKeyDown={event => { if (event.key === 'Escape') { setIsOpen(false); document.querySelector<HTMLButtonElement>('.menu-toggle')?.focus(); } }}>
+        {sections.map(section => <a key={section} href={`/#${section.toLowerCase()}`} onClick={() => setIsOpen(false)}>{section}</a>)}
+        <Link to="/resume" onClick={() => setIsOpen(false)}>Resume ↗</Link>
+      </nav>}
     </header>
   );
-};
-
-export default Header;
+}

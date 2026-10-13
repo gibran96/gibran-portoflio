@@ -24,6 +24,10 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
       "@typescript-eslint/no-unused-vars": "off",
+      // Explicit options bridge the retained TS plugin with ESLint 9.39.
+      "@typescript-eslint/no-unused-expressions": ["error", {
+        allowShortCircuit: false, allowTernary: false, allowTaggedTemplates: false,
+      }],
     },
   }
 );

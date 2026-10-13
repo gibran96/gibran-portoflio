@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Vercel project identity and downloaded environment files
+.vercel
+.env
+.env.*
+.env*

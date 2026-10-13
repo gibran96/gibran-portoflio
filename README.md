@@ -1,73 +1,60 @@
-# Welcome to your Lovable project
+# Gibran Myageri — Portfolio
 
-## Project info
+A dark, minimal portfolio built with React, TypeScript, Vite, and Tailwind CSS. Includes a printable resume at `/resume`.
 
-**URL**: https://lovable.dev/projects/eb56d61e-f8bb-47e1-9173-c9313f4b2327
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/eb56d61e-f8bb-47e1-9173-c9313f4b2327) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Local development
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm ci
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Vite serves the development site at http://localhost:8080.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```sh
+npm run build
+npx tsc -p tsconfig.app.json --noEmit
+npm run lint
+npm run preview
+```
 
-**Use GitHub Codespaces**
+Portfolio and resume content lives in `src/data/portfolio.ts`. Update it there to keep both pages consistent. No environment variables or backend services are required.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Automatic deployment
 
-## What technologies are used for this project?
+The project is prepared for Vercel's GitHub integration:
 
-This project is built with .
+- Pushes to `main` deploy production automatically after the Vercel build succeeds.
+- Pull requests and other branches receive preview deployments.
+- GitHub Actions runs `npm ci`, TypeScript checks, and a production build on pushes to `main` and pull requests.
+- Vercel also runs `npm run check && npm run build` so type errors stop publication independently of GitHub Actions.
+- No Vercel token needs to be stored in GitHub secrets.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+One-time connection (required before automatic hosting is active):
 
-## How can I deploy this project?
+```sh
+npx --yes vercel@64.0.2 login
+npx --yes vercel@64.0.2 link --yes --project gibran-portfolio
+npx --yes vercel@64.0.2 git connect https://github.com/gibran96/gibran-portoflio --yes
+```
 
-Simply open [Lovable](https://lovable.dev/projects/eb56d61e-f8bb-47e1-9173-c9313f4b2327) and click on Share -> Publish.
+If Vercel requests GitHub app authorization, grant it access to `gibran96/gibran-portoflio` in your browser. In Vercel, select `main` as the production branch, Node.js 22, and enable access to System Environment Variables. Production must be publicly accessible; check Deployment Protection settings.
 
-## Can I connect a custom domain to my Lovable project?
+For the first release, deploy and verify a preview, then publish production:
 
-Yes it is!
+```sh
+npm run deploy
+npm run deploy:production
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+After the Git connection is active, commit and push changes to use automatic deployments. The local `.vercel` link and downloaded environment files are ignored by Git.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Vercel builds automatically set absolute social image URLs, the canonical URL, and `og:url` using `VERCEL_PROJECT_PRODUCTION_URL` (falling back to `VERCEL_URL`). Local builds keep relative image URLs.
+
+`vercel.json` supports direct SPA links using Vercel’s standard fallback rewrite; existing assets are served by static hosting. The printable resume uses the supplied resume content; print it from your browser to save a PDF.
+
+## Validation notes
+
+The retained ESLint / TypeScript plugin combination needed explicit `no-unused-expressions` options to run. Full-repository lint still reports four existing errors: empty interfaces in `src/components/ui/command.tsx` and `src/components/ui/textarea.tsx`, and `require()` / `any` usage in `tailwind.config.ts`. These retained library files were not modified.
+
+Browser verification passed at 1440px, 768px, 390px, and 320px, including navigation, resume routing, keyboard skip link, and print controls. Print / Save as PDF produced a readable two-page Letter resume. Production builds and both TypeScript configurations pass; changed-file lint passes.

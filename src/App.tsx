@@ -1,31 +1,18 @@
+import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import Index from '@/pages/Index';
+import Resume from '@/pages/Resume';
+import NotFound from '@/pages/NotFound';
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "./contexts/ThemeContext";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <ThemeProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </ThemeProvider>
-  </QueryClientProvider>
-);
-
-export default App;
+function PageNavigation() {
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    document.title = pathname === '/resume' ? 'Resume | Gibran Myageri' : pathname === '/' ? 'Gibran Myageri | Full Stack Software Engineer' : 'Page not found | Gibran Myageri';
+    if (hash) document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView();
+    else window.scrollTo(0, 0);
+  }, [pathname, hash]);
+  return null;
+}
+export default function App() {
+  return <BrowserRouter><a className="skip-link" href="#main-content">Skip to content</a><PageNavigation /><Routes><Route path="/" element={<Index />} /><Route path="/resume" element={<Resume />} /><Route path="*" element={<NotFound />} /></Routes></BrowserRouter>;
+}

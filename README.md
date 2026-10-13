@@ -24,7 +24,7 @@ Portfolio and resume content lives in `src/data/portfolio.ts`. Update it there t
 
 Public portfolio: https://gibran-portfolio-beta.vercel.app
 
-The project is prepared for Vercel's GitHub integration:
+Vercel's GitHub integration is connected to `gibran96/gibran-portoflio`, with `main` as the production branch:
 
 - Pushes to `main` deploy production automatically after the Vercel build succeeds.
 - Pull requests and other branches receive preview deployments.
@@ -32,7 +32,7 @@ The project is prepared for Vercel's GitHub integration:
 - Vercel also runs `npm run check && npm run build` so type errors stop publication independently of GitHub Actions.
 - No Vercel token needs to be stored in GitHub secrets.
 
-One-time connection (required before automatic hosting is active):
+To link a fresh local checkout to the existing Vercel project:
 
 ```sh
 npx --yes vercel@64.0.2 login
@@ -40,7 +40,7 @@ npx --yes vercel@64.0.2 link --yes --project gibran-portfolio
 npx --yes vercel@64.0.2 git connect https://github.com/gibran96/gibran-portoflio --yes
 ```
 
-If Vercel requests GitHub app authorization, grant it access to `gibran96/gibran-portoflio` in your browser. In Vercel, select `main` as the production branch, Node.js 22, and enable access to System Environment Variables. Production must be publicly accessible; check Deployment Protection settings.
+The GitHub app is authorized for this repository. If reconnecting becomes necessary, check the app’s repository access and the GitHub connection in Vercel Account Settings → Authentication. In Vercel, select `main` as the production branch, Node.js 22, and enable access to System Environment Variables. Production must be publicly accessible; check Deployment Protection settings.
 
 Once the project has its first deployment, deploy and verify a preview, then publish production. Vercel assigns a new project’s very first deployment to production automatically:
 
